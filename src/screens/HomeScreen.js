@@ -6,14 +6,16 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { Octicons } from "@expo/vector-icons";
 import HeartPress from "../components/HeartPress";
+import { FontAwesome } from '@expo/vector-icons';
 
 const places = [
   { name: "Place 1" },
   { name: "Place 2" },
   { name: "Place 3" },
   { name: "Place 4" },
+  { name: "Place 5" },
+
 ];
 
 const HomeScreen = () => {
@@ -32,7 +34,12 @@ const HomeScreen = () => {
           }}
         />
       </View>
-      <View style={styles.footer}></View>
+      <View style={styles.footer}>
+      <View style={styles.homeFooter}>
+      <FontAwesome name="home" size={24} color="#F0F0F5" />
+      <Text>Home</Text>
+      </View>
+      </View>
     </View>
   );
 };
@@ -61,6 +68,11 @@ const styles = StyleSheet.create({
     backgroundColor: "#B6B6B6",
     alignSelf: "flex-end",
   },
+  homeFooter:{
+    marginTop: 10,
+    marginLeft: 25,
+    
+  }
 });
 
 export default HomeScreen;
