@@ -5,32 +5,17 @@ import { Ionicons } from "@expo/vector-icons";
 import { FontAwesome5 } from "@expo/vector-icons";
 
 const Footer = () => {
-  const [isPressed, setIsPressed] = useState(true);
-
-  const handlePress = () => {
-    setIsPressed(!isPressed);
-  };
-
   return (
     <View style={styles.footer}>
       <View style={styles.homeFooter}>
-        <TouchableOpacity onPress={handlePress}>
-          {isPressed ? (
-            <FontAwesome
-              name="home"
-              size={24}
-              color="#F0F0F5"
               style={styles.icon}
-            />
-          ) : (
-            <FontAwesome
-              name="home"
-              size={24}
-              color="blue"
-              style={styles.icon}
-            />
-          )}
-
+        <TouchableOpacity>
+          <FontAwesome
+            name="home"
+            size={24}
+            color="#F0F0F5"
+            style={styles.icon}
+          />
           <Text style={{ color: "#F0F0F5" }}>Home</Text>
         </TouchableOpacity>
       </View>
@@ -75,10 +60,11 @@ const styles = StyleSheet.create({
     marginLeft: 6,
   },
   homeFooter: {
-    marginLeft: 5,
+    //marginLeft: 5,
   },
   searchFooter: {
     marginLeft: 5,
+    marginRight: 5,
   },
 });
 
