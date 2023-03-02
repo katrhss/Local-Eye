@@ -8,7 +8,6 @@ const Footer = () => {
   return (
     <View style={styles.footer}>
       <View style={styles.homeFooter}>
-              style={styles.icon}
         <TouchableOpacity>
           <FontAwesome
             name="home"
