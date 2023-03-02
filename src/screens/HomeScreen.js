@@ -8,6 +8,8 @@ import {
 } from "react-native";
 import HeartPress from "../components/HeartPress";
 import { FontAwesome } from '@expo/vector-icons';
+import { Ionicons } from '@expo/vector-icons';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 const places = [
   { name: "Place 1" },
@@ -35,10 +37,18 @@ const HomeScreen = () => {
         />
       </View>
       <View style={styles.footer}>
-      <View style={styles.homeFooter}>
-      <FontAwesome name="home" size={24} color="#F0F0F5" />
-      <Text>Home</Text>
-      </View>
+        <View style={styles.homeFooter}>
+          <FontAwesome name="home" size={24} color="#F0F0F5" style={styles.icon}/>
+          <Text style={{color:"#F0F0F5"}}>Home</Text>
+        </View>
+        <View style={styles.searchFooter}>
+          <Ionicons name="search" size={24} color="#F0F0F5" style={styles.icon}/>
+          <Text style={{color:"#F0F0F5"}}>Search</Text>
+        </View>
+        <View style={styles.nearbyFooter}>
+          <FontAwesome5 name="map-marker-alt" size={24} color="#F0F0F5" style={{marginLeft: 10}}/>
+          <Text style={{color:"#F0F0F5"}}>Nearby</Text>
+        </View>
       </View>
     </View>
   );
@@ -65,13 +75,23 @@ const styles = StyleSheet.create({
     width: "100%",
     height: 70,
     flex: 0,
-    backgroundColor: "#B6B6B6",
+    flexDirection: "row",
+    backgroundColor: "#182425",
     alignSelf: "flex-end",
+    justifyContent: "space-around",
+  },
+  icon:{
+    marginLeft: 6
   },
   homeFooter:{
     marginTop: 10,
-    marginLeft: 25,
-    
+  },
+  searchFooter:{
+    marginTop: 10,
+   
+  },
+  nearbyFooter:{
+    marginTop: 10
   }
 });
 
