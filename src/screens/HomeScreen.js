@@ -1,10 +1,5 @@
 import React, { useState } from "react";
-import {
-  FlatList,
-  Text,
-  View,
-  StyleSheet,
-} from "react-native";
+import { FlatList, Text, View, StyleSheet, StatusBar } from "react-native";
 import HeartPress from "../components/HeartPress";
 import Footer from "../components/Footer";
 
@@ -14,7 +9,6 @@ const places = [
   { name: "Place 3" },
   { name: "Place 4" },
   { name: "Place 5" },
-
 ];
 
 const HomeScreen = () => {
@@ -25,15 +19,19 @@ const HomeScreen = () => {
           data={places}
           renderItem={({ item }) => {
             return (
-              <View style={styles.list}>
-                <Text style={styles.places}>{item.name}</Text>
-                <HeartPress style={styles.like} />
+              <View>
+                <View style={styles.list}>
+                  <HeartPress />
+                </View>
+                <View>
+                  <Text style={styles.places}>{item.name}</Text>
+                </View>
               </View>
             );
           }}
         />
       </View>
-      <Footer/>
+      <Footer />
     </View>
   );
 };
@@ -43,17 +41,15 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     paddingVertical: 4,
-    borderBottomWidth: 2,
-    justifyContent: "space-between",
+    justifyContent: "flex-end",
+    backgroundColor: "#459FE9",
+    borderRadius: 25,
+    marginHorizontal: 8,
+    height: 220,
   },
   places: {
     fontSize: 24,
     marginLeft: 8,
-  },
-  like: {
-    alignSelf: "center",
-    fontSize: 20,
-    marginRight: 15,
   },
 });
 

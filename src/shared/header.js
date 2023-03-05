@@ -9,15 +9,15 @@ export default function Header({ navigation }) {
 
   return (
     <View style={styles.header}>
+      <View>
+        <Text style={styles.headerText}>Home Screen</Text>
+      </View>
       <Ionicons
         name="person-circle-outline"
         size={38}
         style={styles.icon}
         onPress={accountNavigate}
       />
-      <View>
-        <Text style={styles.headerText}>Home Screen</Text>
-      </View>
     </View>
   );
 }
@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
     height: "100%",
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "flex-start",
+    justifyContent: "space-between",
   },
   headerText: {
     fontWeight: "bold",
@@ -36,8 +36,6 @@ const styles = StyleSheet.create({
     letterSpacing: 1,
   },
   icon: {
-    position: "absolute",
-    left: 360,
     color: "#566573",
   },
 });
