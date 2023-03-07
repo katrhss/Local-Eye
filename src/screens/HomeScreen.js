@@ -1,20 +1,29 @@
 import React, { useState } from "react";
-import {
-  FlatList,
-  Text,
-  View,
-  StyleSheet,
-} from "react-native";
+import { FlatList, Text, View, StyleSheet, Image } from "react-native";
 import HeartPress from "../components/HeartPress";
 import Footer from "../components/Footer";
 
 const places = [
-  { name: "Place 1" },
-  { name: "Place 2" },
-  { name: "Place 3" },
-  { name: "Place 4" },
-  { name: "Place 5" },
-
+  {
+    name: "Ιστορικό - Λαογραφικό και Φυσικής Ιστορίας Μουσείο",
+    image: {
+      uri: "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/7f/b5/b1/museum.jpg?w=1000&h=-1&s=1",
+    },
+  },
+  {
+    name: "Αρχαιολογικό Μουσείο Κοζάνης",
+    image: {
+      uri: "https://upload.wikimedia.org/wikipedia/commons/7/73/Macedonian_Museums-2-Arx_Kozanis-8.jpg",
+    },
+  },
+  {
+    name: "Αρχοντικό Γρ. Βούρκα",
+    image: {
+      uri: "https://lh5.googleusercontent.com/p/AF1QipOPEuKpSAysd7rnm6_fu8bXeFjazqMcF1HYhSg5=w243-h174-n-k-no-nu",
+    },
+  },
+  { name: "Place 4", image: require("../../assets/beach.jpg") },
+  { name: "Place 5", image: require("../../assets/beach.jpg") },
 ];
 
 const HomeScreen = () => {
@@ -25,15 +34,19 @@ const HomeScreen = () => {
           data={places}
           renderItem={({ item }) => {
             return (
-              <View style={styles.list}>
-                <Text style={styles.places}>{item.name}</Text>
-                <HeartPress style={styles.like} />
+              <View>
+                <View style={styles.list}>
+                  <Image style={styles.image} source={item.image} />
+                </View>
+                <View>
+                  <Text style={styles.places}>{item.name}</Text>
+                </View>
               </View>
             );
           }}
         />
       </View>
-      <Footer/>
+      <Footer />
     </View>
   );
 };
@@ -43,17 +56,21 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     paddingVertical: 4,
-    borderBottomWidth: 2,
-    justifyContent: "space-between",
+    justifyContent: "center",
+    backgroundColor: "#C0C6CD",
+    borderRadius: 25,
+    marginHorizontal: 8,
+    height: 260,
   },
   places: {
-    fontSize: 24,
+    fontSize: 22,
     marginLeft: 8,
   },
-  like: {
+  image: {
     alignSelf: "center",
-    fontSize: 20,
-    marginRight: 15,
+    height: "100%",
+    width: "98%",
+    borderRadius: 20,
   },
 });
 

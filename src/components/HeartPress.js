@@ -10,7 +10,7 @@ const HeartPress = () => {
   };
 
   return (
-    <View style={{ alignSelf: "center" }}>
+    <View style={styles.container}>
       <TouchableOpacity onPress={handlePress}>
         {isPressed ? (
           <Octicons name="heart" style={styles.unliked} />
@@ -24,15 +24,16 @@ const HeartPress = () => {
 
 const styles = StyleSheet.create({
   liked: {
-    alignSelf: "center",
     fontSize: 20,
-    marginRight: 15,
     color: "red",
   },
   unliked: {
-    alignSelf: "center",
     fontSize: 20,
-    marginRight: 15,
+  },
+  container: {
+    marginRight: 22,
+    marginTop: 12,
+    alignSelf: "flex-start",
   },
 });
 
