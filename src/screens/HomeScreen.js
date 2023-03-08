@@ -46,7 +46,6 @@ const HomeScreen = () => {
           }}
         />
       </View>
-      <Footer />
     </View>
   );
 };
