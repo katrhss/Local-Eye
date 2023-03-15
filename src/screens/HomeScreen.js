@@ -1,7 +1,14 @@
 import React, { useState } from "react";
-import { FlatList, Text, View, StyleSheet, Image } from "react-native";
+import {
+  FlatList,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import HeartPress from "../components/HeartPress";
-import Footer from "../components/Footer";
+import Details from "../components/Details";
 
 const places = [
   {
@@ -26,28 +33,8 @@ const places = [
   { name: "Place 5", image: require("../../assets/beach.jpg") },
 ];
 
-const HomeScreen = () => {
-  return (
-    <View style={{ flex: 1 }}>
-      <View style={{ flex: 1 }}>
-        <FlatList
-          data={places}
-          renderItem={({ item }) => {
-            return (
-              <View>
-                <View style={styles.list}>
-                  <Image style={styles.image} source={item.image} />
-                </View>
-                <View>
-                  <Text style={styles.places}>{item.name}</Text>
-                </View>
-              </View>
-            );
-          }}
-        />
-      </View>
-    </View>
-  );
+const HomeScreen = ({ navigation }) => {
+  return <Details places={places} navigation={navigation} />;
 };
 
 const styles = StyleSheet.create({

@@ -38,6 +38,7 @@ const navigator = createStackNavigator({
     },
   },
   Account: AccountScreen,
+  Details: PlaceDetailsScreen,
 });
 
 // const navigator = createStackNavigator({
