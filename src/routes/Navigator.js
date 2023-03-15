@@ -9,53 +9,63 @@ import PlaceDetailsScreen from "../screens/PlaceDetailsScreen";
 import CreatePlaceScreen from "../screens/CreatePlaceScreen";
 import SignupScreen from "../screens/SignupScreen";
 import SigninScreen from "../screens/SigninScreen";
+import LoadingScreen from "../screens/LoadingScreen";
 
-/*
 const navigator = createStackNavigator({
-  Home: {
-    screen: HomeScreen,
-    navigationOptions: ({ navigation }) => {
+  Loading: { screen: LoadingScreen },
+  loginFlow: {
+    screen: createStackNavigator({
+      Signup: SignupScreen,
+      Signin: SigninScreen,
+    }),
+    navigationOptions: () => {
       return {
-        headerTitle: () => <Header navigation={navigation} />,
+        headerShown: false,
       };
     },
   },
-  Account: {
-    screen: AccountScreen,
-    navigationOptions: {
-      title: "Account",
-      headerTitleAlign: "center",
-    },
-  },
-});
-*/
-
-const navigator = createStackNavigator({
-  mainScreens: {
+  mainFlow: {
     screen: createMaterialBottomTabNavigator({
       Home: HomeScreen,
-      PlaceDetails: PlaceDetailsScreen,
-      CreatePlace: CreatePlaceScreen,
-      // TODO: Change PlaceDetails to Spotify and CreatePlace to Favorites
+      Spotify: PlaceDetailsScreen,
+      Favorites: CreatePlaceScreen,
     }),
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => <Header navigation={navigation} />,
+        headerLeft: () => null,
       };
     },
   },
-
   Account: AccountScreen,
-  Signup: SignupScreen,
-  Signin: {
-    screen: SigninScreen,
-    navigationOptions: ({ navigation }) => ({
-      headerLeft: () => (
-        <HeaderBackButton onPress={() => navigation.navigate("Account")} />
-      ),
-    }),
-  },
 });
+
+// const navigator = createStackNavigator({
+//   mainScreens: {
+//     screen: createMaterialBottomTabNavigator({
+//       Home: HomeScreen,
+//       PlaceDetails: PlaceDetailsScreen,
+//       CreatePlace: CreatePlaceScreen,
+//       // TODO: Change PlaceDetails to Spotify and CreatePlace to Favorites
+//     }),
+//     navigationOptions: ({ navigation }) => {
+//       return {
+//         headerTitle: () => <Header navigation={navigation} />,
+//       };
+//     },
+//   },
+
+//   Account: AccountScreen,
+//   Signup: SignupScreen,
+//   Signin: {
+//     screen: SigninScreen,
+//     navigationOptions: ({ navigation }) => ({
+//       headerLeft: () => (
+//         <HeaderBackButton onPress={() => navigation.navigate("Account")} />
+//       ),
+//     }),
+//   },
+// });
 
 export default createAppContainer(navigator);
 
