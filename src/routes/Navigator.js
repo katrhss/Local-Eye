@@ -12,7 +12,7 @@ import SigninScreen from "../screens/SigninScreen";
 import LoadingScreen from "../screens/LoadingScreen";
 
 const navigator = createStackNavigator({
-  Loading: { screen: LoadingScreen },
+  Loading: LoadingScreen,
   loginFlow: {
     screen: createStackNavigator({
       Signup: SignupScreen,
