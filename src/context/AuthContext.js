@@ -15,6 +15,8 @@ const authReducer = (state, action) => {
       return { token: null, errorMessage: "" };
     case "isSignedIn":
       return { token: action.payload };
+    case "getUser":
+      return { username: action.payload };
     default:
       return state;
   }
@@ -36,9 +38,13 @@ const clearErrorMessage = (dispatch) => () => {
 
 const signup =
   (dispatch) =>
-  async ({ email, password }) => {
+  async ({ email, password, username }) => {
     try {
-      const response = await trackerApi.post("/signup", { email, password });
+      const response = await trackerApi.post("/signup", {
+        email,
+        password,
+        username,
+      });
       await AsyncStorage.setItem("token", response.data.token);
       dispatch({ type: "signin", payload: response.data.token });
       navigate("Home");
@@ -54,7 +60,7 @@ const signin =
   (dispatch) =>
   async ({ email, password }) => {
     try {
-      const response = await trackerApi.post("signin", { email, password });
+      const response = await trackerApi.post("/signin", { email, password });
       await AsyncStorage.setItem("token", response.data.token);
       dispatch({ type: "signin", payload: response.data.token });
       navigate("Home");
@@ -66,21 +72,26 @@ const signin =
     }
   };
 
-const isSignedIn = (dispatch) => async () => {
-  const token = await AsyncStorage.getItem("token");
-  if (token) {
-    dispatch({ type: "isSignedIn", payload: token });
-  }
-};
-
 const signout = (dispatch) => async () => {
   await AsyncStorage.removeItem("token");
   dispatch({ type: "signout" });
   navigate("loginFlow");
 };
 
+const getUser = (dispatch) => async (email, password, username) => {
+  try {
+    const response = await trackerApi.get("/users", {
+      email,
+      password,
+      username,
+    });
+    console.log(response);
+    dispatch({ type: "getUser", payload: response.data });
+  } catch (err) {}
+};
+
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signin, signup, signout, clearErrorMessage, tryLocalSignin, isSignedIn },
-  { token: null, errorMessage: "" }
+  { signin, signup, signout, clearErrorMessage, tryLocalSignin, getUser },
+  { token: null, errorMessage: "", username: "" }
 );

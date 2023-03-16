@@ -1,47 +1,39 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { Button } from "react-native-elements";
+import { Button, Avatar, getIconType } from "react-native-elements";
 import Spacer from "../components/Spacer";
+import trackerApi from "../api/tracker";
+import AccountButton from "../components/AccountButton";
 import { Context as AuthContext } from "../context/AuthContext";
 
 const AccountScreen = ({ navigation }) => {
-  const { signout, isSignedIn } = useContext(AuthContext);
-  console.log(isSignedIn);
+  const { getUser } = useContext(AuthContext);
+  const test = useContext(AuthContext);
+
+  // useEffect(() => {
+  //   getUser();
+  // }, []);
+  console.log(test.state);
   return (
     <>
-      <Text>Account Screen</Text>
-      <Spacer>
-        <Button title="Sign Out" onPress={signout} />
-      </Spacer>
+      <View style={styles.avatar}>
+        <Avatar
+          size={120}
+          rounded
+          title="U"
+          containerStyle={{ backgroundColor: "blue" }}
+        />
+        <Text></Text>
+      </View>
+      <AccountButton navigation={navigation} />
     </>
   );
 };
-const styles = StyleSheet.create({});
+const styles = StyleSheet.create({
+  avatar: {
+    marginLeft: 15,
+    marginTop: 15,
+  },
+});
 
 export default AccountScreen;
-
-/*
-
-<Button
-        title="Go to Signup"
-        onPress={() => navigation.navigate("Signup")}
-      />
-
-
-
-    
-      return ( token ? <>
-        <Text>Account Screen</Text>
-        <Spacer>
-          <Button title="Sign Out" onPress={signout} />
-        </Spacer>
-      </> : <>
-      <Text>Account Screen</Text>
-      <Spacer>
-      <Button
-      title="Go to Signup"
-      onPress={() => navigation.navigate("Signup")}
-    />
-      </Spacer>
-    </>)
-*/
