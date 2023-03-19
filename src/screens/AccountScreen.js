@@ -1,29 +1,29 @@
-import React, { useContext, useEffect } from "react";
-import { View, Text, StyleSheet } from "react-native";
-import { Button, Avatar, getIconType } from "react-native-elements";
-import Spacer from "../components/Spacer";
-import trackerApi from "../api/tracker";
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { Avatar } from "react-native-elements";
 import AccountButton from "../components/AccountButton";
-import { Context as AuthContext } from "../context/AuthContext";
+import DisplayUsername from "../components/DisplayUsername";
 
 const AccountScreen = ({ navigation }) => {
-  const { getUser } = useContext(AuthContext);
-  const test = useContext(AuthContext);
-
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
-  console.log(test.state);
+  // TODO: Να γίνει καλύτερο Styling σε Avatar και Username.
   return (
     <>
-      <View style={styles.avatar}>
-        <Avatar
-          size={120}
-          rounded
-          title="U"
-          containerStyle={{ backgroundColor: "blue" }}
-        />
-        <Text></Text>
+      <View style={styles.container}>
+        <View style={styles.avatar}>
+          <Avatar
+            size={120}
+            rounded
+            title="U"
+            containerStyle={{ backgroundColor: "blue" }}
+          />
+        </View>
+        <View style={styles.username}>
+          <DisplayUsername />
+        </View>
+        // TODO: Να μπούν κουμπιά Σχετικά/About us, Ρυθμίσεις με theme και
+        ανγινεται Να με θυμάσαι, με τα αναλογα τους screens και πιο όμορφο
+        log-out. // Για το Theme
+        https://medium.com/simform-engineering/manage-dark-mode-in-react-native-application-2a04ba7e76d0
       </View>
       <AccountButton navigation={navigation} />
     </>
@@ -33,6 +33,14 @@ const styles = StyleSheet.create({
   avatar: {
     marginLeft: 15,
     marginTop: 15,
+  },
+  container: {
+    flex: 1,
+    flexDirection: "row",
+  },
+  username: {
+    marginLeft: 5,
+    marginTop: 10,
   },
 });
 

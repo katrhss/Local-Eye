@@ -9,7 +9,6 @@ const AccountButton = ({ navigation }) => {
   const token = useContext(AuthContext);
   return token.state.token ? (
     <>
-      <Text>Account Screen</Text>
       <Spacer>
         <Button title="Sign Out" onPress={signout} />
       </Spacer>
