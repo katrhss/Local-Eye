@@ -10,6 +10,7 @@ import CreatePlaceScreen from "../screens/CreatePlaceScreen";
 import SignupScreen from "../screens/SignupScreen";
 import SigninScreen from "../screens/SigninScreen";
 import LoadingScreen from "../screens/LoadingScreen";
+import SettingsScreen from "../screens/SettingsScreen";
 
 const navigator = createStackNavigator({
   Loading: LoadingScreen,
@@ -38,6 +39,7 @@ const navigator = createStackNavigator({
     },
   },
   Account: AccountScreen,
+  Settings: SettingsScreen,
 });
 
 // const navigator = createStackNavigator({

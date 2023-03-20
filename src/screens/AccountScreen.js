@@ -4,6 +4,7 @@ import { Button, Avatar, Icon } from "react-native-elements";
 import AccountButton from "../components/AccountButton";
 import DisplayUsername from "../components/DisplayUsername";
 // import Icon from "react-native-vector-icons/MaterialIcons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { color } from "react-native-reanimated";
 
 const AccountScreen = ({ navigation }) => {
@@ -25,15 +26,22 @@ const AccountScreen = ({ navigation }) => {
         </View>
       </View>
       <View style={styles.buttons}>
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Settings");
+          }}
+        >
           <View style={styles.settings}>
             <Icon name="settings" type="material" size={24} color={"white"} />
-            <Text style={{ fontSize: 24, color: "white" }}> Settings</Text>
-            <Icon
-              name="mdiChevronRight"
-              type="material-community  "
+            <Text style={{ fontSize: 24, paddingBottom: 2, color: "white" }}>
+              {" "}
+              Settings
+            </Text>
+            <MaterialIcons
+              name="navigate-next"
               size={24}
-              color={"white"}
+              color="white"
+              style={{ marginLeft: 245 }}
             />
           </View>
         </TouchableOpacity>
@@ -55,6 +63,7 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   username: {
+    flex: 1,
     marginLeft: 15,
     marginTop: 28,
   },
@@ -63,13 +72,14 @@ const styles = StyleSheet.create({
   },
   settings: {
     flexDirection: "row",
-    borderRadius: 8,
+    borderRadius: 4,
     borderWidth: 1,
     fontSize: 34,
     alignItems: "center",
-    margin: 4,
+    marginHorizontal: 14,
     paddingLeft: 10,
     backgroundColor: "blue",
+    paddingVertical: 4,
   },
 });
 

@@ -11,7 +11,6 @@ const authReducer = (state, action) => {
       return {
         errorMessage: "",
         token: action.payload,
-        username: action.username,
       };
     case "clear_error_message":
       return { ...state, errorMessage: "" };
@@ -19,8 +18,6 @@ const authReducer = (state, action) => {
       return { token: null, errorMessage: "" };
     case "isSignedIn":
       return { token: action.payload };
-    case "getUsername":
-      return { username: action.payload };
     default:
       return state;
   }
@@ -49,7 +46,7 @@ const signup =
         password,
         username,
       });
-      await AsyncStorage.setItem("token", response.data.token);
+      // await AsyncStorage.setItem("token", response.data.token);
       dispatch({ type: "signin", payload: response.data.token });
       navigate("Home");
     } catch (err) {
@@ -66,7 +63,7 @@ const signin =
     try {
       const response = await trackerApi.post("/signin", { email, password });
       //console.log(username);
-      await AsyncStorage.setItem("token", response.data.token);
+      //await AsyncStorage.setItem("token", response.data.token);
       dispatch({
         type: "signin",
         payload: response.data.token,
@@ -80,34 +77,23 @@ const signin =
     }
   };
 
+// const rememerMe = (dispatch) => {
+//   async () => {
+//     try {
+//       await AsyncStorage.setItem("token", token);
+//       dispatch({ type
+//     }
+//   }
+// }
+
 const signout = (dispatch) => async () => {
-  await AsyncStorage.removeItem("token");
+  //await AsyncStorage.removeItem("token");
   dispatch({ type: "signout" });
   navigate("loginFlow");
 };
 
-// const getUsername = (dispatch) => async (email) => {
-//    const { state, password } = useContext(AuthContext);
-//   const [username, setUsername] = useState("Guest");
-
-//    useEffect(() => {
-//     getUsername();
-//      }, []);
-//   };
-
-const getUsername = (dispatch) => async () => {
-  try {
-    const token = await AsyncStorage.getItem("token");
-    const response = await trackerApi.get(`/users`, { token });
-    //setUsername(response.data);
-    dispatch({ type: "getUsername", payload: response.data });
-  } catch (err) {
-    console.log(err);
-  }
-};
-
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signin, signup, signout, clearErrorMessage, tryLocalSignin, getUsername },
+  { signin, signup, signout, clearErrorMessage, tryLocalSignin },
   { token: null, errorMessage: "", username: "" }
 );
