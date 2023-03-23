@@ -87,7 +87,9 @@ const signin =
 // }
 
 const signout = (dispatch) => async () => {
-  //await AsyncStorage.removeItem("token");
+  await AsyncStorage.removeItem("token");
+  await AsyncStorage.setItem("rememberme", JSON.stringify(null));
+
   dispatch({ type: "signout" });
   navigate("loginFlow");
 };
