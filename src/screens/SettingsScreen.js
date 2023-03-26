@@ -56,25 +56,27 @@ const SettingsScreen = ({ navigation }) => {
   );
 };
 
+SettingsScreen.navigationOptions = {
+  headerTitle: "Ρυθμίσεις",
+};
+
 const styles = StyleSheet.create({
   line: {
     flexDirection: "row",
     alignItems: "center",
-    //  justifyContent: "space-between",
     paddingHorizontal: 10,
     marginHorizontal: 12,
     paddingVertical: 6,
     borderWidth: 0,
     borderRadius: 14,
-    backgroundColor: "#CCD1D1",
+    backgroundColor: "white",
   },
   setting: {
     fontSize: 16,
-    fontWeight: "500",
   },
   category: {
-    marginHorizontal: 12,
-    marginVertical: 6,
+    marginHorizontal: 20,
+    marginVertical: 10,
     fontSize: 19,
     fontWeight: "bold",
   },

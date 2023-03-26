@@ -87,11 +87,10 @@ const signin =
 // }
 
 const signout = (dispatch) => async () => {
+  navigate("loginFlow");
   await AsyncStorage.removeItem("token");
   await AsyncStorage.setItem("rememberme", JSON.stringify(null));
-
   dispatch({ type: "signout" });
-  navigate("loginFlow");
 };
 
 export const { Provider, Context } = createDataContext(

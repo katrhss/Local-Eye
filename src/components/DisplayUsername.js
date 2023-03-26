@@ -5,8 +5,9 @@ import { Context as AuthContext } from "../context/AuthContext";
 // TODO: Βαλε το withNavigation για να πάρεις το username και να μπορέσεις να βάλεις το πρώτο γράμμα στο Avatar
 
 const DisplayUsername = () => {
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState("Guest");
   const { state } = useContext(AuthContext);
+
   useEffect(() => {
     trackerApi
       .get("/users", {
@@ -17,17 +18,23 @@ const DisplayUsername = () => {
       .then((res) => setUsername(res.data))
       .catch((err) => console.error(err));
   }, []);
-  return (
+
+  return state.token && username !== "Guest" ? (
     <View>
       <Text style={styles.username}>{username}</Text>
+    </View>
+  ) : (
+    <View>
+      <Text style={styles.username}>Guest</Text>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   username: {
+    paddingTop: 5,
     fontSize: 28,
-    fontWeight: "bold",
+    fontWeight: "500",
   },
 });
 
