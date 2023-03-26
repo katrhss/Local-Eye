@@ -24,16 +24,16 @@ const HeartPress = () => {
 
 const styles = StyleSheet.create({
   liked: {
-    fontSize: 20,
+    fontSize: 24,
     color: "red",
   },
   unliked: {
-    fontSize: 20,
+    fontSize: 24,
   },
   container: {
-    marginRight: 22,
+    marginRight: 10,
     marginTop: 12,
-    alignSelf: "flex-start",
+    alignSelf: "center",
   },
 });
 

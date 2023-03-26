@@ -80,6 +80,8 @@ const navigator = createStackNavigator({
     },
   },
   Account: AccountScreen,
+
+  Details: PlaceDetailsScreen,
   Settings: SettingsScreen,
   About: AboutScreen,
 });
