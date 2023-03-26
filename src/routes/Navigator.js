@@ -1,7 +1,9 @@
 import React from "react";
-import { createAppContainer, createSwitchNavigator } from "react-navigation";
-import { createStackNavigator, HeaderBackButton } from "react-navigation-stack";
+import { View } from "react-native";
+import { createAppContainer } from "react-navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import { createMaterialBottomTabNavigator } from "react-navigation-material-bottom-tabs";
+
 import HomeScreen from "../screens/HomeScreen";
 import AccountScreen from "../screens/AccountScreen";
 import Header from "../shared/header";
@@ -10,6 +12,10 @@ import CreatePlaceScreen from "../screens/CreatePlaceScreen";
 import SignupScreen from "../screens/SignupScreen";
 import SigninScreen from "../screens/SigninScreen";
 import LoadingScreen from "../screens/LoadingScreen";
+import SettingsScreen from "../screens/SettingsScreen";
+import AboutScreen from "../screens/AboutScreen";
+import { Ionicons } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
 
 const navigator = createStackNavigator({
   Loading: LoadingScreen,
@@ -26,18 +32,56 @@ const navigator = createStackNavigator({
   },
   mainFlow: {
     screen: createMaterialBottomTabNavigator({
-      Home: HomeScreen,
-      Spotify: PlaceDetailsScreen,
-      Favorites: CreatePlaceScreen,
+      Home: {
+        screen: HomeScreen,
+        navigationOptions: {
+          tabBarIcon: () => (
+            <View>
+              <Ionicons name="home" size={24} color="#17171F" />
+            </View>
+          ),
+          inactiveColor: "black",
+
+          barStyle: { backgroundColor: "#008e9d" },
+        },
+      },
+      Spotify: {
+        screen: PlaceDetailsScreen,
+        navigationOptions: {
+          tabBarIcon: () => (
+            <View>
+              <Entypo name="spotify" size={24} color="#17171F" />
+            </View>
+          ),
+          inactiveColor: "black",
+          barStyle: { backgroundColor: "#008e9d" },
+        },
+      },
+      Favorites: {
+        screen: CreatePlaceScreen,
+        navigationOptions: {
+          tabBarIcon: () => (
+            <View>
+              <Ionicons name="heart" size={24} color="#17171F" />
+            </View>
+          ),
+          inactiveColor: "black",
+
+          barStyle: { backgroundColor: "#008e9d" },
+        },
+      },
     }),
     navigationOptions: ({ navigation }) => {
       return {
         headerTitle: () => <Header navigation={navigation} />,
         headerLeft: () => null,
+        barStyle: { backgroundColor: "red" },
       };
     },
   },
   Account: AccountScreen,
+  Settings: SettingsScreen,
+  About: AboutScreen,
 });
 
 // const navigator = createStackNavigator({

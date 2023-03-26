@@ -16,7 +16,9 @@ const SignupScreen = ({ navigation }) => {
         errorMessage={state.errorMessage}
         submitButtonText="Sign Up"
         onSubmit={signup}
+        signup
       />
+
       <NavLink
         routeName="Signin"
         text="Alrady have an account? Sign in instead."
@@ -37,7 +39,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
-    marginBottom: 250,
+    marginBottom: 150,
   },
 });
 

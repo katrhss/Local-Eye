@@ -8,7 +8,10 @@ const authReducer = (state, action) => {
     case "add_error":
       return { ...state, errorMessage: action.payload };
     case "signin":
-      return { errorMessage: "", token: action.payload };
+      return {
+        errorMessage: "",
+        token: action.payload,
+      };
     case "clear_error_message":
       return { ...state, errorMessage: "" };
     case "signout":
@@ -36,10 +39,14 @@ const clearErrorMessage = (dispatch) => () => {
 
 const signup =
   (dispatch) =>
-  async ({ email, password }) => {
+  async ({ email, password, username }) => {
     try {
-      const response = await trackerApi.post("/signup", { email, password });
-      await AsyncStorage.setItem("token", response.data.token);
+      const response = await trackerApi.post("/signup", {
+        email,
+        password,
+        username,
+      });
+      // await AsyncStorage.setItem("token", response.data.token);
       dispatch({ type: "signin", payload: response.data.token });
       navigate("Home");
     } catch (err) {
@@ -54,9 +61,13 @@ const signin =
   (dispatch) =>
   async ({ email, password }) => {
     try {
-      const response = await trackerApi.post("signin", { email, password });
-      await AsyncStorage.setItem("token", response.data.token);
-      dispatch({ type: "signin", payload: response.data.token });
+      const response = await trackerApi.post("/signin", { email, password });
+      //console.log(username);
+      //await AsyncStorage.setItem("token", response.data.token);
+      dispatch({
+        type: "signin",
+        payload: response.data.token,
+      });
       navigate("Home");
     } catch (err) {
       dispatch({
@@ -66,21 +77,24 @@ const signin =
     }
   };
 
-const isSignedIn = (dispatch) => async () => {
-  const token = await AsyncStorage.getItem("token");
-  if (token) {
-    dispatch({ type: "isSignedIn", payload: token });
-  }
-};
+// const rememerMe = (dispatch) => {
+//   async () => {
+//     try {
+//       await AsyncStorage.setItem("token", token);
+//       dispatch({ type
+//     }
+//   }
+// }
 
 const signout = (dispatch) => async () => {
-  await AsyncStorage.removeItem("token");
-  dispatch({ type: "signout" });
   navigate("loginFlow");
+  await AsyncStorage.removeItem("token");
+  await AsyncStorage.setItem("rememberme", JSON.stringify(null));
+  dispatch({ type: "signout" });
 };
 
 export const { Provider, Context } = createDataContext(
   authReducer,
-  { signin, signup, signout, clearErrorMessage, tryLocalSignin, isSignedIn },
-  { token: null, errorMessage: "" }
+  { signin, signup, signout, clearErrorMessage, tryLocalSignin },
+  { token: null, errorMessage: "", username: "" }
 );

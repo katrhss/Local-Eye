@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FlatList, Text, View, StyleSheet, Image } from "react-native";
 import HeartPress from "../components/HeartPress";
-import Footer from "../components/Footer";
 
 const places = [
   {
