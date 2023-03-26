@@ -1,12 +1,5 @@
 import React, { useState } from "react";
-import {
-  FlatList,
-  Text,
-  View,
-  StyleSheet,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet } from "react-native";
 
 import Details from "../components/Details";
 

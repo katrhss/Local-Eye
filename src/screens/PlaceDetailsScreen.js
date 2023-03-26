@@ -6,7 +6,7 @@ import { withNavigation } from "react-navigation";
 const PlaceDetailsScreen = ({ navigation }) => {
   const places = navigation.getParam("places");
   return (
-    <>
+    <View style={{ flex: 1 }}>
       <View>
         <Text style={styles.name}>{places.name}</Text>
       </View>
@@ -16,7 +16,7 @@ const PlaceDetailsScreen = ({ navigation }) => {
       <View>
         <Text style={styles.text}>{places.text}</Text>
       </View>
-    </>
+    </View>
   );
 };
 
@@ -27,12 +27,15 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 10,
     alignSelf: "center",
+    textAlign: "center",
   },
   image: {
     alignSelf: "center",
-    height: 230,
-    width: 370,
+    height: "100%",
+    width: "90%",
     borderRadius: 20,
+    height: 260,
+    // width: 360,
   },
   text: {
     marginLeft: 10,
