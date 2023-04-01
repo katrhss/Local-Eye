@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import MapView from "react-native-maps";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import Map from "../components/Map";
+import Spacer from "../components/Spacer";
 
 const PlaceDetailsScreen = ({ navigation }) => {
   const places = navigation.getParam("places");
   return (
-    <View style={{ flex: 1 }}>
+    <ScrollView style={{}}>
       <View>
         <Text style={styles.name}>{places.name}</Text>
       </View>
@@ -15,7 +16,16 @@ const PlaceDetailsScreen = ({ navigation }) => {
       <View>
         <Text style={styles.text}>{places.text}</Text>
       </View>
-    </View>
+      <Spacer />
+      <View style={styles.map}>
+        <Map
+          latitude={places.cords.latitude}
+          longitude={places.cords.longitude}
+          name={places.name}
+        />
+      </View>
+      <Spacer />
+    </ScrollView>
   );
 };
 
@@ -31,15 +41,20 @@ const styles = StyleSheet.create({
   image: {
     alignSelf: "center",
     height: "100%",
-    width: "90%",
+    width: "95%",
     borderRadius: 20,
     height: 260,
-    // width: 360,
   },
   text: {
     marginLeft: 10,
-    marginTop: 10,
+    // marginTop: 10,
     alignSelf: "center",
+  },
+  map: {
+    alignSelf: "center",
+    height: "98%",
+    width: "98%",
+    marginHorizontal: 8,
   },
 });
 

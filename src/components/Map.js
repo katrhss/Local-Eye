@@ -1,15 +1,33 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import MapView from "react-native-maps";
+import MapView, { Marker, Callout } from "react-native-maps";
 
-const Map = () => {
-  return <MapView style={styles.map} />;
+const Map = ({ latitude, longitude, name }) => {
+  return (
+    <MapView
+      style={[styles.map, { borderWidth: 2, borderColor: "red" }]}
+      initialRegion={{
+        latitude,
+        longitude,
+        latitudeDelta: 0.0013,
+        longitudeDelta: 0.0013,
+      }}
+    >
+      <Marker coordinate={{ latitude, longitude }}>
+        <Callout>
+          <Text>{name}</Text>
+        </Callout>
+      </Marker>
+    </MapView>
+  );
 };
 
 const styles = StyleSheet.create({
   map: {
-    height: 300,
+    height: 400,
   },
 });
 
 export default Map;
+
+//const [pinText, setPinText] = useState();
