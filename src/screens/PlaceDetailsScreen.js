@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
-import { withNavigation } from "react-navigation";
+import MapView from "react-native-maps";
 
 const PlaceDetailsScreen = ({ navigation }) => {
   const places = navigation.getParam("places");
