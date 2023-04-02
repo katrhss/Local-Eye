@@ -2,6 +2,7 @@ import React, { useReducer } from "react";
 import createDataContext from "./createDataContext";
 import uuid from "react-native-uuid";
 import placesDB from "../api/placesDB";
+import { navigate } from "../navigationRef";
 
 const placeReducer = (state, action) => {
   switch (action.type) {
@@ -30,10 +31,13 @@ const getPlaces = (dispatch) => {
 };
 
 const addPlace = (dispatch) => {
-  return (title, details, callback) => {
-    dispatch({ type: "add_place", payload: { title, details } });
-    if (callback) {
-      callback();
+  return async (name, details) => {
+    try {
+      await placesDB.post("/places", { name, details });
+      dispatch({ type: "add_place", payload: { title, details } });
+      navigate("Home");
+    } catch (err) {
+      console.log(err);
     }
   };
 };
@@ -42,6 +46,7 @@ export const { Context, Provider } = createDataContext(
   placeReducer,
   {
     getPlaces,
+    addPlace,
   },
   []
 );
