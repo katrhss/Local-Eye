@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL: "https://smart-kozani.herokuapp.com",
+  baseURL: "https://mongodb-database.herokuapp.com",
 });

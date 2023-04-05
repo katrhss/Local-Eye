@@ -1,8 +1,9 @@
 import React, { useReducer } from "react";
 import createDataContext from "./createDataContext";
-import uuid from "react-native-uuid";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import placesDB from "../api/placesDB";
 import { navigate } from "../navigationRef";
+import trackerApi from "../api/tracker";
 
 const placeReducer = (state, action) => {
   switch (action.type) {
@@ -12,9 +13,9 @@ const placeReducer = (state, action) => {
       return [
         ...state,
         {
-          id: uuid.v4(),
-          title: action.payload.title,
+          name: action.payload.title,
           details: action.payload.details,
+          image: action.payload.thumbnail.url,
         },
       ];
     default:
@@ -24,17 +25,22 @@ const placeReducer = (state, action) => {
 
 const getPlaces = (dispatch) => {
   return async () => {
-    const response = await placesDB.get("/places");
+    const token = await AsyncStorage.getItem("token");
+    const response = await trackerApi.get("/places", {
+      headers: {
+        Authorization: "Bearer " + token,
+      },
+    });
 
     dispatch({ type: "get_places", payload: response.data });
   };
 };
 
 const addPlace = (dispatch) => {
-  return async (name, details) => {
+  return async (name, details, photo) => {
     try {
-      await placesDB.post("/places", { name, details });
-      dispatch({ type: "add_place", payload: { title, details } });
+      await trackerApi.post("/places", { name, details, photo });
+      dispatch({ type: "add_place", payload: { name, details, photo } });
       navigate("Home");
     } catch (err) {
       console.log(err);

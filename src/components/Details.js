@@ -18,6 +18,7 @@ const Details = ({ navigation }) => {
     getPlaces();
   }, []);
 
+  console.log(state);
   return (
     <View style={{ flex: 1, backgroundColor: "#E2E8E9" }}>
       <View style={{ flex: 1 }}>
@@ -35,7 +36,7 @@ const Details = ({ navigation }) => {
                 >
                   <View style={styles.list}>
                     <View>
-                      <Image style={styles.image} source={item.image} />
+                      <Image style={styles.image} source={item.thumbnail} />
                     </View>
                     <View
                       style={{
@@ -43,7 +44,7 @@ const Details = ({ navigation }) => {
                         justifyContent: "space-between",
                       }}
                     >
-                      <Text style={styles.places}>{item.name}</Text>
+                      <Text style={styles.places}>{item.title}</Text>
                       <HeartPress />
                     </View>
                   </View>

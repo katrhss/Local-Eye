@@ -18,18 +18,18 @@ const CreatePlaceScreen = () => {
   const [visible, setVisible] = useState(false);
   const [name, setName] = useState("");
   const [details, setDetails] = useState("");
-  const [image, setImage] = useState();
+  const [photo, setPhoto] = useState();
 
   const openImageLibrary = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
+      allowsEditing: false,
       aspect: [4, 3],
       quality: 1,
     });
     console.log(result);
     if (!result.canceled) {
-      setImage(result.assets[0].uri);
+      setPhoto(result.assets[0].uri);
     }
   };
 
@@ -59,9 +59,10 @@ const CreatePlaceScreen = () => {
           <Text style={styles.imageBtn}> Upload Image</Text>
         </TouchableOpacity>
 
-        {image && (
+        {console.log(photo)}
+        {photo && (
           <Image
-            source={{ uri: image }}
+            source={{ uri: photo }}
             style={{
               marginLeft: 20,
               marginTop: 10,
@@ -104,7 +105,7 @@ const CreatePlaceScreen = () => {
             title="Ναι"
             titleStyle={{ marginHorizontal: 50, fontSize: 18 }}
             onPress={() => {
-              addPlace(name, details);
+              addPlace(name, details, photo);
             }}
           />
           <Dialog.Button
