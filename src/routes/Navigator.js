@@ -14,8 +14,10 @@ import SigninScreen from "../screens/SigninScreen";
 import LoadingScreen from "../screens/LoadingScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import AboutScreen from "../screens/AboutScreen";
+import SpotifyScreen from "../screens/SpotifyScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
+import test from "../screens/test";
 
 const navigator = createStackNavigator({
   Loading: LoadingScreen,
@@ -46,7 +48,7 @@ const navigator = createStackNavigator({
         },
       },
       Spotify: {
-        screen: PlaceDetailsScreen,
+        screen: test,
         navigationOptions: {
           tabBarIcon: () => (
             <View>
