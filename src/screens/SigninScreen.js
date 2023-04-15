@@ -4,26 +4,29 @@ import { NavigationEvents } from "react-navigation";
 import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
 import { Context as AuthContext } from "../context/AuthContext";
+import { PageScrollView } from "pagescrollview";
 
 const SigninScreen = () => {
   const { state, signin, clearErrorMessage } = useContext(AuthContext);
 
   return (
-    <View style={styles.container}>
-      <NavigationEvents onWillFocus={clearErrorMessage} />
-      <AuthForm
-        headerText="Sign In to Your Account"
-        errorMessage={state.errorMessage}
-        onSubmit={signin}
-        submitButtonText="Sign in"
-      />
-      <NavLink
-        text="Don't have an account? Sign up instead."
-        routeName="Signup"
-        guestText="Don't want to sign in? Continue as a Guest."
-        guestRoute="Home"
-      />
-    </View>
+    <PageScrollView>
+      <View style={styles.container}>
+        <NavigationEvents onWillFocus={clearErrorMessage} />
+        <AuthForm
+          headerText="Sign In to Your Account"
+          errorMessage={state.errorMessage}
+          onSubmit={signin}
+          submitButtonText="Sign in"
+        />
+        <NavLink
+          text="Don't have an account? Sign up instead."
+          routeName="Signup"
+          guestText="Don't want to sign in? Continue as a Guest."
+          guestRoute="Home"
+        />
+      </View>
+    </PageScrollView>
   );
 };
 

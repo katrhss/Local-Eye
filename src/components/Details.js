@@ -16,9 +16,11 @@ const Details = ({ navigation }) => {
 
   useEffect(() => {
     getPlaces();
-  }, []);
+    navigation.addListener("didFocus", () => {
+      getPlaces();
+    });
+  }, [navigation]);
 
-  console.log(state);
   return (
     <View style={{ flex: 1, backgroundColor: "#E2E8E9" }}>
       <View style={{ flex: 1 }}>

@@ -1,7 +1,7 @@
 import React, { useReducer } from "react";
 import createDataContext from "./createDataContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import placesDB from "../api/placesDB";
+import mime from "mime";
 import { navigate } from "../navigationRef";
 import trackerApi from "../api/tracker";
 
@@ -15,7 +15,7 @@ const placeReducer = (state, action) => {
         {
           name: action.payload.title,
           details: action.payload.details,
-          image: action.payload.thumbnail.url,
+          image: action.payload.photo,
         },
       ];
     default:
@@ -37,13 +37,31 @@ const getPlaces = (dispatch) => {
 };
 
 const addPlace = (dispatch) => {
-  return async (name, details, photo) => {
+  return async (name, details, photo, latitude, longitude) => {
+    console.log(latitude);
+    const coords = JSON.stringify({
+      latitude: latitude,
+      longitude: longitude,
+    });
+    const formdata = new FormData();
+    formdata.append("thumbnail", {
+      uri: photo.uri,
+      type: mime.getType(photo.uri),
+      name: photo.uri.split("/").pop(),
+    });
+    formdata.append("title", name);
+    formdata.append("details", details);
+    formdata.append("coords", coords);
     try {
-      await trackerApi.post("/places", { name, details, photo });
-      dispatch({ type: "add_place", payload: { name, details, photo } });
+      await trackerApi.post("/places", formdata, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+
       navigate("Home");
     } catch (err) {
-      console.log(err);
+      console.warn(err.response.data || err);
     }
   };
 };
