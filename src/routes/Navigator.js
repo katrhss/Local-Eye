@@ -37,7 +37,7 @@ const navigator = createStackNavigator({
         navigationOptions: {
           tabBarIcon: () => (
             <View>
-              <Ionicons name="home" size={24} color="#17171F" />
+              <Ionicons name="home" size={24} color="white" />
             </View>
           ),
           inactiveColor: "black",
@@ -50,7 +50,7 @@ const navigator = createStackNavigator({
         navigationOptions: {
           tabBarIcon: () => (
             <View>
-              <Entypo name="spotify" size={24} color="#17171F" />
+              <Entypo name="spotify" size={24} color="white" />
             </View>
           ),
           inactiveColor: "black",
@@ -62,7 +62,7 @@ const navigator = createStackNavigator({
         navigationOptions: {
           tabBarIcon: () => (
             <View>
-              <Ionicons name="heart" size={24} color="#17171F" />
+              <Ionicons name="heart" size={24} color="white" />
             </View>
           ),
           inactiveColor: "black",
@@ -80,7 +80,7 @@ const navigator = createStackNavigator({
     },
   },
   Account: AccountScreen,
-
+  Create: CreatePlaceScreen,
   Details: PlaceDetailsScreen,
   Settings: SettingsScreen,
   About: AboutScreen,

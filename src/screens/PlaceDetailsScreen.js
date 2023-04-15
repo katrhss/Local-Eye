@@ -8,13 +8,13 @@ const PlaceDetailsScreen = ({ navigation }) => {
   return (
     <ScrollView style={{}}>
       <View>
-        <Text style={styles.name}>{places.name}</Text>
+        <Text style={styles.name}>{places.title}</Text>
       </View>
       <View>
-        <Image style={styles.image} source={places.image} />
+        <Image style={styles.image} source={places.thumbnail} />
       </View>
       <View>
-        <Text style={styles.text}>{places.text}</Text>
+        <Text style={styles.text}>{places.details}</Text>
       </View>
       <Spacer />
       <View style={styles.map}>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import {
   View,
   Text,
@@ -7,16 +7,27 @@ import {
   FlatList,
   TouchableOpacity,
 } from "react-native";
+import { Context as PlaceContext } from "../context/PlaceContext";
 import { withNavigation } from "react-navigation";
 import HeartPress from "../components/HeartPress";
 
-const Details = ({ places, navigation }) => {
+const Details = ({ navigation }) => {
+  const { state, getPlaces } = useContext(PlaceContext);
+
+  useEffect(() => {
+    getPlaces();
+    navigation.addListener("didFocus", () => {
+      getPlaces();
+    });
+  }, [navigation]);
+
   return (
     <View style={{ flex: 1, backgroundColor: "#E2E8E9" }}>
       <View style={{ flex: 1 }}>
         <FlatList
           showsVerticalScrollIndicator={false}
-          data={places}
+          data={state}
+          // keyExtractor={(place) => {place.title}}
           renderItem={({ item }) => {
             return (
               <View style={styles.container}>
@@ -27,7 +38,7 @@ const Details = ({ places, navigation }) => {
                 >
                   <View style={styles.list}>
                     <View>
-                      <Image style={styles.image} source={item.image} />
+                      <Image style={styles.image} source={item.thumbnail} />
                     </View>
                     <View
                       style={{
@@ -35,7 +46,7 @@ const Details = ({ places, navigation }) => {
                         justifyContent: "space-between",
                       }}
                     >
-                      <Text style={styles.places}>{item.name}</Text>
+                      <Text style={styles.places}>{item.title}</Text>
                       <HeartPress />
                     </View>
                   </View>
