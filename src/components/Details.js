@@ -82,13 +82,22 @@ const styles = StyleSheet.create({
     height: 260,
   },
   container: {
-    borderWidth: 1.75,
-    borderColor: "#ccc",
+    // borderWidth: 1.75,
+    // borderColor: "#ccc",
     borderRadius: 20,
     marginBottom: 10,
     backgroundColor: "#F3F6F6",
     marginHorizontal: 8,
     marginTop: 8,
+    elevation: 8,
+    // shadowColor: "#171717",
+    elevation: 8,
+    shadowOffset: {
+      width: 1,
+      height: 1,
+    },
+    shadowOpacity: 0.8,
+    shadowRadius: 5,
   },
 });
 

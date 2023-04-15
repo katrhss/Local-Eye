@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 15,
     fontWeight: "200",
+    textAlign: "center",
   },
   dots: { marginLeft: 2, borderBottomWidth: 1, borderStyle: "dashed" },
 });

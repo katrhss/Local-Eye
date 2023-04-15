@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import { FlatList } from "react-native-gesture-handler";
-import { withNavigation } from "react-navigation";
+import { View, Text, StyleSheet, Image, ScrollView } from "react-native";
+import Map from "../components/Map";
+import Spacer from "../components/Spacer";
 
 const PlaceDetailsScreen = ({ navigation }) => {
   const places = navigation.getParam("places");
   return (
-    <>
+    <ScrollView style={{}}>
       <View>
         <Text style={styles.name}>{places.title}</Text>
       </View>
@@ -16,7 +16,16 @@ const PlaceDetailsScreen = ({ navigation }) => {
       <View>
         <Text style={styles.text}>{places.details}</Text>
       </View>
-    </>
+      <Spacer />
+      <View style={styles.map}>
+        <Map
+          latitude={places.cords.latitude}
+          longitude={places.cords.longitude}
+          name={places.name}
+        />
+      </View>
+      <Spacer />
+    </ScrollView>
   );
 };
 
@@ -27,17 +36,25 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     marginTop: 10,
     alignSelf: "center",
+    textAlign: "center",
   },
   image: {
     alignSelf: "center",
-    height: 230,
-    width: 370,
+    height: "100%",
+    width: "95%",
     borderRadius: 20,
+    height: 260,
   },
   text: {
     marginLeft: 10,
-    marginTop: 10,
+    // marginTop: 10,
     alignSelf: "center",
+  },
+  map: {
+    alignSelf: "center",
+    height: "98%",
+    width: "98%",
+    marginHorizontal: 8,
   },
 });
 
