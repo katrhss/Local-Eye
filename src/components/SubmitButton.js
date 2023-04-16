@@ -23,8 +23,8 @@ const styles = StyleSheet.create({
   submit: {
     position: "absolute",
     borderRadius: 100,
-    marginTop: 710,
-    marginLeft: 340,
+    top: "90%",
+    left: "80%",
     padding: 7,
     backgroundColor: "#008e9d",
   },
