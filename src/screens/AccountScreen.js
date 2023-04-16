@@ -93,7 +93,8 @@ const styles = StyleSheet.create({
   content: {
     borderRadius: 15,
     backgroundColor: "#FFFFFF",
-    marginHorizontal: 20,
+    width: "90%",
+    left: "5%",
   },
   line: {
     flexDirection: "row",
@@ -117,10 +118,11 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: "white",
     paddingRight: 150,
-    marginLeft: 18,
-    marginTop: 70,
-    height: 114,
-    width: 388,
+    left: "5%",
+    top: "20%",
+    height: "33%",
+    width: "90%",
+
     borderRadius: 15,
     position: "absolute",
   },

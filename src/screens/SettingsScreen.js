@@ -49,7 +49,7 @@ const SettingsScreen = ({ navigation }) => {
             setChecked(value);
             RememberMe(value);
           }}
-          style={{ paddingLeft: 200 }}
+          style={{ left: "400%" }}
         />
       </View>
     </View>
