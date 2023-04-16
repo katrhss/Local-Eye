@@ -19,9 +19,9 @@ const PlaceDetailsScreen = ({ navigation }) => {
       <Spacer />
       <View style={styles.map}>
         <Map
-          latitude={places.cords.latitude}
-          longitude={places.cords.longitude}
-          name={places.name}
+          latitude={places.coords.latitude}
+          longitude={places.coords.longitude}
+          name={places.title}
         />
       </View>
       <Spacer />
