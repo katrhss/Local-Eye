@@ -18,11 +18,13 @@ const PlaceDetailsScreen = ({ navigation }) => {
       </View>
       <Spacer />
       <View style={styles.map}>
-        <Map
-          latitude={places.coords.latitude}
-          longitude={places.coords.longitude}
-          name={places.title}
-        />
+        {places.coords.latitude && places.coords.longitude ? (
+          <Map
+            latitude={places.coords.latitude}
+            longitude={places.coords.longitude}
+            name={places.title}
+          />
+        ) : null}
       </View>
       <Spacer />
     </ScrollView>
