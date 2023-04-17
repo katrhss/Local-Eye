@@ -1,21 +1,31 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, Button } from "react-native";
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  TouchableOpacity,
+  Image,
+} from "react-native";
 import * as AuthSession from "expo-auth-session";
 import * as WebBrowser from "expo-web-browser";
 import { Buffer } from "buffer";
 import queryString from "query-string";
+import { withNavigation } from "react-navigation";
 
 const AUTHORIZATION_ENDPOINT = "https://accounts.spotify.com/authorize";
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
-const SPOTIFY_CLIENT_ID = "439c71056e1845569ae588d08fcdc843";
-const SPOTIFY_REDIRECT_URI = "exp://192.168.1.5:19000/--/redirect";
-const SPOTIFY_CLIENT_SECRET = "4e8d819ae96b4e6e9a6a9e92e8430599";
+const SPOTIFY_CLIENT_ID = "6840a005894f420c85e49881678afb09";
+const SPOTIFY_REDIRECT_URI = "exp://192.168.0.146:19000/--/redirect";
+const SPOTIFY_CLIENT_SECRET = "2e09af4e8c1242dcb8dbbf858cec3895";
 const SPOTIFY_API_ENDPOINT = "https://api.spotify.com/v1";
 
-export default function SpotifyLoginButton() {
+const SpotifyLoginButton = ({ navigation }) => {
   const [error, setError] = useState(null);
   const [playlists, setPlaylists] = useState([]);
   const [accessToken, setAccessToken] = useState(null);
+  const [selectedPlaylist, setSelectedPlaylist] = useState(null);
+  // const [playlistTracks, setPlaylistTracks] = useState([]);
 
   const handleSpotifyLogin = async () => {
     const redirectUrl = AuthSession.makeRedirectUri({
@@ -76,25 +86,26 @@ export default function SpotifyLoginButton() {
       } catch (e) {
         setError(e.message);
       }
-      try {
-        const response = await fetch(`${SPOTIFY_API_ENDPOINT}/me/playlists`, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-        // console.log("Response" + JSON.stringify(response));
-        const data = await response.json();
-        setPlaylists(data.items);
-        // console.log("Data" + JSON.stringify(data));
-      } catch (error) {
-        console.log("Error:", error);
-      }
     } else if (result.type === "error") {
       setError(result.params.error_description);
     }
   };
 
-  const handleGetPlaylists = async () => {};
+  const handleGetPlaylists = async (playlistId) => {
+    try {
+      const response = await fetch(`${SPOTIFY_API_ENDPOINT}/me/playlists`, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      // console.log("Response" + JSON.stringify(response));
+      const data = await response.json();
+      setPlaylists(data.items);
+      // console.log("Data" + JSON.stringify(data));
+    } catch (error) {
+      console.log("Error:", error);
+    }
+  };
 
   // useEffect(() => {
   //   handleGetPlaylists();
@@ -111,11 +122,35 @@ export default function SpotifyLoginButton() {
       )}
       {playlists ? (
         <View>
-          {playlists.map((playlist) => (
-            <Text key={playlist.id}>{playlist.name}</Text>
-          ))}
+          <FlatList
+            // showsVerticalScrollIndicator={false}
+            data={playlists}
+            renderItem={({ item }) => {
+              return (
+                <View>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.navigate("Songs", {
+                        id: item.id,
+                        api: SPOTIFY_API_ENDPOINT,
+                        acctok: accessToken,
+                      })
+                    }
+                  >
+                    <Text>{item.name}</Text>
+                    <Image
+                      source={item.images.url}
+                      style={{ height: "50%", width: "50%" }}
+                    ></Image>
+                  </TouchableOpacity>
+                </View>
+              );
+            }}
+          />
         </View>
       ) : null}
     </View>
   );
-}
+};
+
+export default withNavigation(SpotifyLoginButton);

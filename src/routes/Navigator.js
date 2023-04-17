@@ -14,11 +14,12 @@ import SigninScreen from "../screens/SigninScreen";
 import LoadingScreen from "../screens/LoadingScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import AboutScreen from "../screens/AboutScreen";
-import SpotifyScreen from "../screens/SpotifyScreen";
+// import SpotifyScreen from "../screens/SpotifyScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
-import test from "../screens/test";
+// import test from "../screens/test";
 import SpotiTest from "../screens/SpotiTest";
+import SpotiSongs from "../screens/SpotiSongs";
 
 const navigator = createStackNavigator({
   Loading: LoadingScreen,
@@ -87,6 +88,7 @@ const navigator = createStackNavigator({
   Details: PlaceDetailsScreen,
   Settings: SettingsScreen,
   About: AboutScreen,
+  Songs: SpotiSongs,
 });
 
 // const navigator = createStackNavigator({
