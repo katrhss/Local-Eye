@@ -14,6 +14,7 @@ import SigninScreen from "../screens/SigninScreen";
 import LoadingScreen from "../screens/LoadingScreen";
 import SettingsScreen from "../screens/SettingsScreen";
 import AboutScreen from "../screens/AboutScreen";
+import WeatherScreen from "../screens/WeatherScreen";
 import { Ionicons } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 
@@ -57,8 +58,8 @@ const navigator = createStackNavigator({
           barStyle: { backgroundColor: "#008e9d" },
         },
       },
-      Favorites: {
-        screen: CreatePlaceScreen,
+      Weather: {
+        screen: WeatherScreen,
         navigationOptions: {
           tabBarIcon: () => (
             <View>
