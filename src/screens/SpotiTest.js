@@ -15,9 +15,9 @@ import { withNavigation } from "react-navigation";
 
 const AUTHORIZATION_ENDPOINT = "https://accounts.spotify.com/authorize";
 const TOKEN_ENDPOINT = "https://accounts.spotify.com/api/token";
-const SPOTIFY_CLIENT_ID = "6840a005894f420c85e49881678afb09";
-const SPOTIFY_REDIRECT_URI = "exp://192.168.0.146:19000/--/redirect";
-const SPOTIFY_CLIENT_SECRET = "2e09af4e8c1242dcb8dbbf858cec3895";
+const SPOTIFY_CLIENT_ID = "e1bf71b74a85458d808e0fb9b4b0ad3f";
+const SPOTIFY_REDIRECT_URI = "exp://192.168.1.7:19000/--/redirect";
+const SPOTIFY_CLIENT_SECRET = "f5360faa09bb401e9ab476cdea20cfcc";
 const SPOTIFY_API_ENDPOINT = "https://api.spotify.com/v1";
 
 const SpotifyLoginButton = ({ navigation }) => {
@@ -101,6 +101,7 @@ const SpotifyLoginButton = ({ navigation }) => {
       // console.log("Response" + JSON.stringify(response));
       const data = await response.json();
       setPlaylists(data.items);
+      console.log("Items: ", data.items);
       // console.log("Data" + JSON.stringify(data));
     } catch (error) {
       console.log("Error:", error);
@@ -138,10 +139,12 @@ const SpotifyLoginButton = ({ navigation }) => {
                     }
                   >
                     <Text>{item.name}</Text>
-                    <Image
-                      source={item.images.url}
-                      style={{ height: "50%", width: "50%" }}
-                    ></Image>
+                    {item.images.length > 0 && (
+                      <Image
+                        source={{ uri: item.images[0].url }}
+                        style={{ height: 50, width: 50 }}
+                      />
+                    )}
                   </TouchableOpacity>
                 </View>
               );
