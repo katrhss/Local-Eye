@@ -41,15 +41,23 @@ const SettingsScreen = ({ navigation }) => {
     <View>
       <Text style={styles.category}>Γενικα</Text>
       <View style={styles.line}>
-        <MaterialIcons name="restore" size={28} color="black" />
-        <Text style={styles.setting}>{"   "}Να με θυμάσαι</Text>
+        <View
+          style={{
+            flexDirection: "row",
+            alignItems: "center",
+          }}
+        >
+          <MaterialIcons name="restore" size={28} color="#008e9d" />
+          <Text style={styles.setting}>{"   "}Να με θυμάσαι</Text>
+        </View>
         <Switch
+          trackColor={{ true: "#008e9d", false: "grey" }}
+          thumbColor="#008e9d"
           value={checked}
           onValueChange={(value) => {
             setChecked(value);
             RememberMe(value);
           }}
-          style={{ left: "400%" }}
         />
       </View>
     </View>
@@ -63,7 +71,9 @@ SettingsScreen.navigationOptions = {
 const styles = StyleSheet.create({
   line: {
     flexDirection: "row",
-    alignItems: "center",
+    justifyContent: "space-between",
+
+    // alignItems: "center",
     paddingHorizontal: 10,
     marginHorizontal: 12,
     paddingVertical: 6,

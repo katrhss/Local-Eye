@@ -38,24 +38,16 @@ const navigator = createStackNavigator({
         navigationOptions: {
           tabBarIcon: () => (
             <View>
-              <Ionicons name="home" size={24} color="white" />
+              <Ionicons name="home" size={24} color="#008e9d" />
             </View>
           ),
+          tabBarLabel: "Αρχική",
+          tabBarOptions: {},
+          activeColor: "#008e9d",
           inactiveColor: "black",
 
-          barStyle: { backgroundColor: "#008e9d" },
-        },
-      },
-      Spotify: {
-        screen: PlaceDetailsScreen,
-        navigationOptions: {
-          tabBarIcon: () => (
-            <View>
-              <Entypo name="spotify" size={24} color="white" />
-            </View>
-          ),
-          inactiveColor: "black",
-          barStyle: { backgroundColor: "#008e9d" },
+          barStyle: { backgroundColor: "white" },
+          tabBarStyle: { justifycontent: "space-between" },
         },
       },
       Weather: {
@@ -63,12 +55,13 @@ const navigator = createStackNavigator({
         navigationOptions: {
           tabBarIcon: () => (
             <View>
-              <Ionicons name="heart" size={24} color="white" />
+              <Ionicons name="partly-sunny" size={24} color="#008e9d" />
             </View>
           ),
+          tabBarLabel: "Καιρός",
+          activeColor: "#008e9d",
           inactiveColor: "black",
-
-          barStyle: { backgroundColor: "#008e9d" },
+          barStyle: { backgroundColor: "white" },
         },
       },
     }),
@@ -77,12 +70,18 @@ const navigator = createStackNavigator({
         headerTitle: () => <Header navigation={navigation} />,
         headerLeft: () => null,
         barStyle: { backgroundColor: "red" },
+        tabStyle: { width: "auto" },
       };
     },
   },
   Account: AccountScreen,
   Create: CreatePlaceScreen,
-  Details: PlaceDetailsScreen,
+  Details: {
+    screen: PlaceDetailsScreen,
+    navigationOptions: {
+      headerTitle: "Λεπτομέρειες",
+    },
+  },
   Settings: SettingsScreen,
   About: AboutScreen,
 });

@@ -35,7 +35,7 @@ const AboutScreen = () => {
             <MaterialCommunityIcons
               name="web"
               size={24}
-              color="black"
+              color="#008e9d"
               style={styles.icons}
             />
           </TouchableOpacity>
@@ -47,7 +47,7 @@ const AboutScreen = () => {
             <Ionicons
               name="logo-instagram"
               size={24}
-              color="black"
+              color="#008e9d"
               style={styles.icons}
             />
           </TouchableOpacity>
@@ -59,7 +59,7 @@ const AboutScreen = () => {
             <Ionicons
               name="logo-github"
               size={24}
-              color="black"
+              color="#008e9d"
               style={styles.icons}
             />
           </TouchableOpacity>
