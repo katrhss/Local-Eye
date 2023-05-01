@@ -7,34 +7,47 @@ import {
   Dimensions,
   StyleSheet,
 } from "react-native";
-
+import moment from "moment-timezone";
 import FutureForecast from "./FutureForecast";
 
-const WeatherScroll = () => {
+const WeatherScroll = ({ weatherData }) => {
   return (
     <ScrollView
       horizontal
       contentContainerStyle={styles.scrollviewContainer}
       style={styles.scrollview}
     >
-      <CurrentTemp />
-      <FutureForecast />
+      <CurrentTemp
+        data={weatherData && weatherData.length > 0 ? weatherData[0] : {}}
+      />
+      <FutureForecast
+        data={weatherData && weatherData.length > 0 ? weatherData : {}}
+      />
     </ScrollView>
   );
 };
 
-const CurrentTemp = () => {
-  const img = { uri: "https://openweathermap.org/img/wn/10d@2x.png" };
-  return (
-    <View style={styles.curTempContainer}>
-      <Image source={img} style={styles.image} />
-      <View style={styles.insideCurTempContainer}>
-        <Text style={styles.day}>Sunday</Text>
-        <Text style={styles.temp}>Night - 28&#176;C</Text>
-        <Text style={styles.temp}>Day - 35&#176;C</Text>
+const CurrentTemp = ({ data }) => {
+  if (data && data.weather) {
+    const img = {
+      uri:
+        "https://openweathermap.org/img/wn/" + data.weather[0].icon + "@4x.png",
+    };
+    return (
+      <View style={styles.curTempContainer}>
+        <Image source={img} style={styles.image} />
+        <View style={styles.insideCurTempContainer}>
+          <Text style={styles.day}>
+            {moment(data.dt * 1000).format("dddd")}
+          </Text>
+          <Text style={styles.temp}>Lowest - {data.temp.night}&#176;C</Text>
+          <Text style={styles.temp}>Highest - {data.temp.day}&#176;C</Text>
+        </View>
       </View>
-    </View>
-  );
+    );
+  } else {
+    return <View></View>;
+  }
 };
 
 const { width: SCREEN_WIDTH } = Dimensions.get("window");
@@ -55,11 +68,12 @@ const styles = StyleSheet.create({
   image: {
     width: 100,
     height: 180,
+    marginLeft: 10,
   },
   curTempContainer: {
-    backgroundColor: "red",
+    // backgroundColor: "red",
     // width: "80%",
-    width: SCREEN_WIDTH - 50,
+    width: SCREEN_WIDTH - 60,
     marginHorizontal: 25,
     // marginRight: 200,
     // marginLeft: 30,
@@ -67,7 +81,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "red",
     justifyContent: "center",
     flexDirection: "row",
-    // backgroundColor: "#00000033",
+    backgroundColor: "#00000033",
     alignItems: "center",
     borderRadius: 10,
     borderColor: "#eee",

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import moment from "moment-timezone";
 
 const days = [
   "Sunday",
@@ -37,7 +38,7 @@ const WeatherItem = ({ title, value, unit }) => {
   );
 };
 
-const DateTime = () => {
+const DateTime = ({ current, timezone, lat, lon }) => {
   const [date, setDate] = useState("");
   const [time, setTime] = useState("");
 
@@ -72,15 +73,41 @@ const DateTime = () => {
           <Text style={styles.date}>{date}</Text>
         </View>
         <View style={styles.weatherItemContainer}>
-          <WeatherItem title="Humidity" value="59" unit="%" />
-          <WeatherItem title="Pressure" value="1000" unit="hPA" />
-          <WeatherItem title="Sunrise" value="06:00" unit="am" />
-          <WeatherItem title="Sunset" value="06:00" unit="pm" />
+          <WeatherItem
+            title="Humidity"
+            value={current ? current.humidity : ""}
+            unit="%"
+          />
+          <WeatherItem
+            title="Pressure"
+            value={current ? current.pressure : ""}
+            unit="hPA"
+          />
+          <WeatherItem
+            title="Sunrise"
+            value={
+              current
+                ? moment.tz(current.sunrise * 1000, timezone).format("HH:mm")
+                : ""
+            }
+            unit="am"
+          />
+          <WeatherItem
+            title="Sunset"
+            value={
+              current
+                ? moment.tz(current.sunset * 1000, timezone).format("HH:mm")
+                : ""
+            }
+            unit="pm"
+          />
         </View>
       </View>
       <View>
         <Text style={styles.timezone}>Kozani/Greece</Text>
-        <Text style={styles.latlong}>3.22Ν 50Ε</Text>
+        <Text style={styles.latlong}>
+          {lat}Ν {lon}Ε
+        </Text>
       </View>
     </View>
   );
@@ -101,14 +128,17 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: "#eee",
     fontWeight: "300",
+    marginLeft: 5,
   },
   timezone: {
     textAlign: "right",
+    marginRight: 2,
     fontSize: 20,
     color: "white",
   },
   latlong: {
     textAlign: "right",
+    marginRight: 2,
     fontSize: 16,
     color: "white",
 
@@ -119,6 +149,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     marginTop: 10,
+    marginLeft: 4,
   },
   weatherItem: {
     flexDirection: "row",
