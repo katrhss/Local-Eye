@@ -20,8 +20,8 @@ const PlaceDetailsScreen = ({ navigation }) => {
       <View style={styles.map}>
         {places.coords ? (
           <Map
-            latitude={places.coords.latitude}
-            longitude={places.coords.longitude}
+            latitude={places.coords.latitude ? places.coords.latitude : 0}
+            longitude={places.coords.longitude ? places.coords.longitude : 0}
             name={places.title}
           />
         ) : null}
