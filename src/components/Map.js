@@ -14,6 +14,8 @@ const Map = ({ latitude, longitude, name }) => {
           latitudeDelta: 0.0013,
           longitudeDelta: 0.0013,
         }}
+        scrollEnabled={false}
+        zoomEnabled={false}
       >
         <Marker coordinate={{ latitude, longitude }}>
           <Callout>
