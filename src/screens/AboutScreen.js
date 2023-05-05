@@ -14,8 +14,8 @@ const AboutScreen = () => {
   return (
     <>
       <View style={styles.containerUp}>
-        <Text style={styles.text}>"Όνομα Εφαρμογής" για Android</Text>
-        <Text style={styles.text}>Έκδοση v0.1.0</Text>
+        <Text style={styles.text}>Local Eye για Android</Text>
+        <Text style={styles.text}>Έκδοση v1.0.0</Text>
         <Spacer />
         <Text style={styles.text}>
           IEEE Student Branch, University of Western Macedonia, Kastoria
@@ -35,7 +35,7 @@ const AboutScreen = () => {
             <MaterialCommunityIcons
               name="web"
               size={24}
-              color="black"
+              color="#008e9d"
               style={styles.icons}
             />
           </TouchableOpacity>
@@ -47,7 +47,7 @@ const AboutScreen = () => {
             <Ionicons
               name="logo-instagram"
               size={24}
-              color="black"
+              color="#008e9d"
               style={styles.icons}
             />
           </TouchableOpacity>
@@ -59,7 +59,7 @@ const AboutScreen = () => {
             <Ionicons
               name="logo-github"
               size={24}
-              color="black"
+              color="#008e9d"
               style={styles.icons}
             />
           </TouchableOpacity>
@@ -98,7 +98,13 @@ const styles = StyleSheet.create({
     fontWeight: "200",
     textAlign: "center",
   },
-  dots: { marginLeft: 2, borderBottomWidth: 1, borderStyle: "dashed" },
+
+  dots: {
+    marginLeft: 2,
+    borderBottomColor: "#008e9d",
+    borderBottomWidth: 1,
+    borderStyle: "dashed",
+  },
 });
 
 export default AboutScreen;

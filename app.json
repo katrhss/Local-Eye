@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "SmartKozani",
-    "slug": "SmartKozani",
+    "name": "LocalEye",
+    "slug": "LocalEye",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -22,6 +22,13 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
+      },
+      "permissions": ["android.permission.RECORD_AUDIO"],
+      "package": "com.katrhs.LocalEye",
+      "config": {
+        "googleMaps": {
+          "apiKey": "AIzaSyDzCLUSS2QBVu3AD3GIfplSbfN43AQoSCw"
+        }
       }
     },
     "web": {
@@ -34,6 +41,11 @@
           "photosPermission": "The app accesses your photos to let you share them with your friends."
         }
       ]
-    ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "6de555d4-b1ac-4329-a51a-cf932f52c110"
+      }
+    }
   }
 }

@@ -18,10 +18,10 @@ const PlaceDetailsScreen = ({ navigation }) => {
       </View>
       <Spacer />
       <View style={styles.map}>
-        {places.coords.latitude && places.coords.longitude ? (
+        {places.coords ? (
           <Map
-            latitude={places.coords.latitude}
-            longitude={places.coords.longitude}
+            latitude={places.coords.latitude ? places.coords.latitude : 0}
+            longitude={places.coords.longitude ? places.coords.longitude : 0}
             name={places.title}
           />
         ) : null}
@@ -48,8 +48,8 @@ const styles = StyleSheet.create({
     height: 260,
   },
   text: {
-    marginLeft: 10,
-    // marginTop: 10,
+    marginHorizontal: 10,
+    marginTop: 14,
     alignSelf: "center",
   },
   map: {
@@ -59,5 +59,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 8,
   },
 });
+
+PlaceDetailsScreen.navigationOptions = {
+  headerTitle: "Λεπτομέρειες",
+};
 
 export default PlaceDetailsScreen;

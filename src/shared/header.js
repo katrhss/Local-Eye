@@ -10,7 +10,7 @@ export default function Header({ navigation }) {
   return (
     <View style={styles.header}>
       <View>
-        <Text style={styles.headerText}>Home Screen</Text>
+        <Text style={styles.headerText}>Local Eye</Text>
       </View>
       <Ionicons
         name="person-circle-outline"
@@ -34,8 +34,9 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 20,
     letterSpacing: 1,
+    color: "#008e9d",
   },
   icon: {
-    color: "#566573",
+    color: "#008e9d",
   },
 });

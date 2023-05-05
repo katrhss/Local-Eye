@@ -47,7 +47,6 @@ const Details = ({ navigation }) => {
                       }}
                     >
                       <Text style={styles.places}>{item.title}</Text>
-                      <HeartPress />
                     </View>
                   </View>
                 </TouchableOpacity>
