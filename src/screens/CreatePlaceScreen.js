@@ -156,7 +156,7 @@ const CreatePlaceScreen = () => {
         <Text>
           Για την προσθήκη συντεταγμένων θα χρειαστεί να ψάξετε στο Google και
           να προσθέσετε τις ακριβείς συντεταγμένες για να μπορεί να εμφανίζεται
-          σωστά η τοποθεσία στον χάρτη μετα την υποβολή.
+          σωστά η τοποθεσία στον χάρτη μετά την υποβολή.
         </Text>
         <Dialog.Actions>
           <Dialog.Button
@@ -169,6 +169,10 @@ const CreatePlaceScreen = () => {
       </Dialog>
     </View>
   );
+};
+
+CreatePlaceScreen.navigationOptions = {
+  headerTitle: "Δημηουργία Τοποθεσίας",
 };
 
 const styles = StyleSheet.create({

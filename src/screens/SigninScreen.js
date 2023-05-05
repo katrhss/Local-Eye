@@ -14,15 +14,16 @@ const SigninScreen = () => {
       <View style={styles.container}>
         <NavigationEvents onWillFocus={clearErrorMessage} />
         <AuthForm
-          headerText="Sign In to Your Account"
+          headerText="Συνδεθείτε στον λογαριασμό σας"
           errorMessage={state.errorMessage}
           onSubmit={signin}
-          submitButtonText="Sign in"
+          submitButtonText="Σύνδεση"
         />
         <NavLink
-          text="Don't have an account? Sign up instead."
+          text="Δεν έχετε λογαριασμό? Φτιάξτε έναν εδώ!"
           routeName="Signup"
-          guestText="Don't want to sign in? Continue as a Guest."
+          guestText="Δεν θέλετε να συνδεθείτε? Συνεχίστε ως Επισκέπτης."
+          // guestText="Don't want to sign in? Continue as a Guest."
           guestRoute="Home"
         />
       </View>

@@ -25,7 +25,7 @@ const DisplayUsername = () => {
     </View>
   ) : (
     <View>
-      <Text style={styles.username}>Guest</Text>
+      <Text style={styles.username}>Επισκέπτης</Text>
     </View>
   );
 };

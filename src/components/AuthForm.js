@@ -17,11 +17,11 @@ const AuthForm = ({
   return (
     <>
       <Spacer>
-        <Text h3>{headerText}</Text>
+        <Text style={styles.headerText}>{headerText}</Text>
       </Spacer>
       {signup ? (
         <Input
-          label="Username"
+          label="Ψευδώνυμο"
           value={username}
           onChangeText={setUsername}
           autoCapitalize="none"
@@ -40,7 +40,7 @@ const AuthForm = ({
       <Spacer />
       <Input
         secureTextEntry
-        label="Password"
+        label="Κωδικός"
         value={password}
         onChangeText={setPassword}
         autoCapitalize="none"
@@ -61,6 +61,10 @@ const AuthForm = ({
 };
 
 const styles = StyleSheet.create({
+  headerText: {
+    fontSize: 28,
+    fontWeight: "bold",
+  },
   errorMessage: {
     fontSize: 16,
     color: "red",
