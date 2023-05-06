@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import Spacer from "./Spacer";
-import { Button } from "react-native-elements";
+
 import { Context as AuthContext } from "../context/AuthContext";
 import { Ionicons } from "@expo/vector-icons";
 

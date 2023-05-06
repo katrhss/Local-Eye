@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, ImageBackground, StyleSheet } from "react-native";
+import { View, ImageBackground, StyleSheet } from "react-native";
 
 import DateTime from "../components/DateTime";
 import WeatherScroll from "../components/WeatherScroll";
@@ -18,7 +18,6 @@ const WeatherScreen = () => {
       )
         .then((res) => res.json())
         .then((data) => {
-          // console.log("Data: " + data);
           setData(data);
         });
     } catch (err) {

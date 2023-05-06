@@ -3,7 +3,6 @@ import { View, Text, StyleSheet } from "react-native";
 import { Switch } from "react-native-elements";
 import { withNavigation } from "react-navigation";
 import { Context as AuthContext } from "../context/AuthContext";
-import Spacer from "../components/Spacer";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { MaterialIcons } from "@expo/vector-icons";
 

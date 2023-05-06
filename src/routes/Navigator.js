@@ -16,7 +16,6 @@ import SettingsScreen from "../screens/SettingsScreen";
 import AboutScreen from "../screens/AboutScreen";
 import WeatherScreen from "../screens/WeatherScreen";
 import { Ionicons } from "@expo/vector-icons";
-import { Entypo } from "@expo/vector-icons";
 
 const navigator = createStackNavigator({
   Loading: LoadingScreen,
@@ -86,62 +85,4 @@ const navigator = createStackNavigator({
   About: AboutScreen,
 });
 
-// const navigator = createStackNavigator({
-//   mainScreens: {
-//     screen: createMaterialBottomTabNavigator({
-//       Home: HomeScreen,
-//       PlaceDetails: PlaceDetailsScreen,
-//       CreatePlace: CreatePlaceScreen,
-//       // TODO: Change PlaceDetails to Spotify and CreatePlace to Favorites
-//     }),
-//     navigationOptions: ({ navigation }) => {
-//       return {
-//         headerTitle: () => <Header navigation={navigation} />,
-//       };
-//     },
-//   },
-
-//   Account: AccountScreen,
-//   Signup: SignupScreen,
-//   Signin: {
-//     screen: SigninScreen,
-//     navigationOptions: ({ navigation }) => ({
-//       headerLeft: () => (
-//         <HeaderBackButton onPress={() => navigation.navigate("Account")} />
-//       ),
-//     }),
-//   },
-// });
-
 export default createAppContainer(navigator);
-
-/*
-{
-        screen: HomeScreen,
-        navigationOptions: ({ navigation }) => {
-          return {
-            headerTitle: () => <Header navigation={navigation} />
-          }
-        },
-      },
-
-
-
-
-
-const switchNavigator = createSwitchNavigator({
-  loginFlow: createStackNavigator({
-    Signup: SignupScreen,
-    Signin: SigninScreen
-  }),
-  mainFlow: createMaterialBottomTabNavigator({
-    placeListFlow: createStackNavigator({
-      Home: HomeScreen,
-      PlaceDetails: PlaceDetailsScreen
-    })
-    CreatePlace: CreatePlaceScreen
-    Account: AccountScreen
-  })
-})
-
-*/

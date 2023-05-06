@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Image,
@@ -55,15 +55,10 @@ const { width: SCREEN_WIDTH } = Dimensions.get("window");
 const styles = StyleSheet.create({
   scrollview: {
     flex: 0.4,
-    // backgroundColor: "red",
     backgroundColor: "#18181bcc",
-    // paddingLeft: "10%",
   },
   scrollviewContainer: {
     paddingVertical: "6%",
-    // paddingHorizontal: "5%",
-    // flex: 1,
-    // paddingRight: "20%",
   },
   image: {
     width: 100,
@@ -71,14 +66,8 @@ const styles = StyleSheet.create({
     marginLeft: 10,
   },
   curTempContainer: {
-    // backgroundColor: "red",
-    // width: "80%",
     width: SCREEN_WIDTH - 60,
     marginHorizontal: 25,
-    // marginRight: 200,
-    // marginLeft: 30,
-    // flex: 1,
-    // backgroundColor: "red",
     justifyContent: "center",
     flexDirection: "row",
     backgroundColor: "#00000033",
@@ -105,10 +94,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
   },
   insideCurTempContainer: {
-    // width: "100%",
     paddingLeft: "24%",
-    // marginRight: 10,
-    // left: "10%",
   },
 });
 

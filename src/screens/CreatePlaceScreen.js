@@ -29,7 +29,6 @@ const CreatePlaceScreen = () => {
     if (!result.canceled) {
       setDisplayPhoto(result.assets[0].uri);
       setPhoto(result.assets[0]);
-      console.log(result.assets[0]);
     }
   };
 
@@ -136,8 +135,9 @@ const CreatePlaceScreen = () => {
             title="Ναι"
             titleStyle={{ marginHorizontal: 50, fontSize: 18 }}
             onPress={() => {
-              if (name && details && photo) console.log(latitude);
-              addPlace(name, details, photo, latitude, longitude);
+              if (name && details && photo) {
+                addPlace(name, details, photo, latitude, longitude);
+              }
             }}
           />
           <Dialog.Button
@@ -229,7 +229,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderColor: "gray",
     borderWidth: 3,
-    // height: 260,
     marginTop: 10,
   },
   longitude: {

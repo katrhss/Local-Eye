@@ -1,19 +1,11 @@
 import React from "react";
 import { Text, View, TouchableOpacity, StyleSheet } from "react-native";
-import { Button, Avatar, Icon } from "react-native-elements";
+import { Avatar } from "react-native-elements";
 import SignoutButton from "../components/SignoutButton";
 import DisplayUsername from "../components/DisplayUsername";
-// import Icon from "react-native-vector-icons/MaterialIcons";
-import { MaterialIcons } from "@expo/vector-icons";
 import { Ionicons } from "@expo/vector-icons";
-import { color } from "react-native-reanimated";
 
 const AccountScreen = ({ navigation }) => {
-  // // TODO: Να γίνει καλύτερο Styling σε Avatar και Username.
-  // // TODO: Να μπούν κουμπιά Σχετικά/About us, Ρυθμίσεις με theme και αν γινεται Να με θυμάσαι, με τα αναλογα τους screens και πιο όμορφο log-out. Για το Theme
-  // TODO: Μένει ακόμα το ερώτημα για το Theme https://medium.com/simform-engineering/manage-dark-mode-in-react-native-application-2a04ba7e76d0
-  // TODO: Να φτιαχτεί το κενό όσο περιμένει για username
-
   return (
     <View>
       <View>
@@ -67,28 +59,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     margin: 20,
     paddingTop: 100,
-
-    // backgroundColor: "#E5E7E9",
   },
   avatarContainer: {
     backgroundColor: "white",
     borderWidth: 6,
     borderColor: "#E5E7E9",
     position: "absolute",
-    // paddingRight: 18 ,
-    // padding: 5,
-    //marginBottom: 30,
   },
   avatar: {
     width: "100%",
     height: "110%",
-    // backgroundColor: "red",
-    // tintColor: "#E5E7E9",
   },
   username: {
     paddingBottom: 30,
-
-    // backgroundColor: "red",
   },
   content: {
     borderRadius: 15,

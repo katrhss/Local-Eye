@@ -1,10 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { View, Text, Dimensions, Image, StyleSheet } from "react-native";
 import moment from "moment-timezone";
 
 const FutureForecast = ({ data }) => {
-  // console.log(data);
-  // console.log(data.length);
   return (
     <View style={{ flexDirection: "row" }}>
       {data && data.length > 0 ? (
@@ -48,7 +46,6 @@ const styles = StyleSheet.create({
   itemContainer: {
     width: SCREEN_WIDTH / 2.5,
     marginRight: 25,
-    ////////////////////////////////
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#00000033",

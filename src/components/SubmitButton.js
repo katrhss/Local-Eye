@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
-import { View, TouchableOpacity, StyleSheet } from "react-native";
-import { Button } from "react-native-elements";
+import { TouchableOpacity, StyleSheet } from "react-native";
 import { Entypo } from "@expo/vector-icons";
 import { Context as AuthContext } from "../context/AuthContext";
 

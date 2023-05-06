@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
 import MapView, { Marker, Callout, PROVIDER_GOOGLE } from "react-native-maps";
 
 const Map = ({ latitude, longitude, name }) => {
@@ -36,5 +36,3 @@ const styles = StyleSheet.create({
 });
 
 export default Map;
-
-//const [pinText, setPinText] = useState();

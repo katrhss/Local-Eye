@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { Context as PlaceContext } from "../context/PlaceContext";
 import { withNavigation } from "react-navigation";
-import HeartPress from "../components/HeartPress";
 
 const Details = ({ navigation }) => {
   const { state, getPlaces } = useContext(PlaceContext);
@@ -27,7 +26,6 @@ const Details = ({ navigation }) => {
         <FlatList
           showsVerticalScrollIndicator={false}
           data={state}
-          // keyExtractor={(place) => {place.title}}
           renderItem={({ item }) => {
             return (
               <View style={styles.container}>
@@ -81,15 +79,12 @@ const styles = StyleSheet.create({
     height: 260,
   },
   container: {
-    // borderWidth: 1.75,
-    // borderColor: "#ccc",
     borderRadius: 20,
     marginBottom: 10,
     backgroundColor: "#F3F6F6",
     marginHorizontal: 8,
     marginTop: 8,
     elevation: 8,
-    // shadowColor: "#171717",
     elevation: 8,
     shadowOffset: {
       width: 1,
@@ -101,32 +96,3 @@ const styles = StyleSheet.create({
 });
 
 export default withNavigation(Details);
-
-// container: {
-//   flex: 1,
-//   flexDirection: "column",
-//   alignItems: "center",
-//   justifyContent: "space-evenly",
-//   paddingTop: 40,
-//   paddingBottom: 50,
-
-//   backgroundColor: "#C0C6CD",
-//   borderRadius: 25,
-//   marginHorizontal: 5,
-//   marginVertical: 12,
-// },
-// list: {
-//   height: 150,
-//   width: 200,
-// },
-// places: {
-//   fontSize: 18,
-//   // marginTop: 40,
-//   marginLeft: 8,
-//   justifyContent: "center",
-// },
-// image: {
-//   height: "100%",
-//   width: "98%",
-//   borderRadius: 20,
-// },

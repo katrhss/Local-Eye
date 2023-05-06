@@ -23,7 +23,6 @@ const SigninScreen = () => {
           text="Δεν έχετε λογαριασμό? Φτιάξτε έναν εδώ!"
           routeName="Signup"
           guestText="Δεν θέλετε να συνδεθείτε? Συνεχίστε ως Επισκέπτης."
-          // guestText="Don't want to sign in? Continue as a Guest."
           guestRoute="Home"
         />
       </View>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   View,
   Text,
@@ -91,7 +91,6 @@ const styles = StyleSheet.create({
   icons: {
     marginHorizontal: 14,
     marginVertical: 10,
-    // margin: 14,
   },
   text: {
     fontSize: 15,

@@ -6,7 +6,7 @@ import AuthForm from "../components/AuthForm";
 import NavLink from "../components/NavLink";
 import { PageScrollView } from "pagescrollview";
 
-const SignupScreen = ({ navigation }) => {
+const SignupScreen = () => {
   const { state, signup, clearErrorMessage } = useContext(AuthContext);
 
   return (

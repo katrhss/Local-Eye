@@ -1,4 +1,4 @@
-import React, { useReducer } from "react";
+import React from "react";
 import createDataContext from "./createDataContext";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import mime from "mime";

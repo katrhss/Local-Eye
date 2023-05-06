@@ -46,7 +46,7 @@ const signup =
         password,
         username,
       });
-      // await AsyncStorage.setItem("token", response.data.token);
+
       dispatch({ type: "signin", payload: response.data.token });
       navigate("Home");
     } catch (err) {
@@ -62,8 +62,7 @@ const signin =
   async ({ email, password }) => {
     try {
       const response = await trackerApi.post("/signin", { email, password });
-      //console.log(username);
-      //await AsyncStorage.setItem("token", response.data.token);
+
       dispatch({
         type: "signin",
         payload: response.data.token,
@@ -77,14 +76,7 @@ const signin =
     }
   };
 
-// const rememerMe = (dispatch) => {
-//   async () => {
-//     try {
-//       await AsyncStorage.setItem("token", token);
-//       dispatch({ type
-//     }
-//   }
-// }
+
 
 const signout = (dispatch) => async () => {
   navigate("loginFlow");
