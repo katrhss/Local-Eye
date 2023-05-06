@@ -172,7 +172,7 @@ const CreatePlaceScreen = () => {
 };
 
 CreatePlaceScreen.navigationOptions = {
-  headerTitle: "Δημηουργία Τοποθεσίας",
+  headerTitle: "Προσθήκη Τοποθεσίας",
 };
 
 const styles = StyleSheet.create({
