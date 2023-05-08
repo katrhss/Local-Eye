@@ -43,21 +43,30 @@ const CreatePlaceScreen = () => {
     <View style={styles.container}>
       <PageScrollView>
         <View style={{ height: 1000 }}>
-          <Text style={styles.titleText}>Τίτλος</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.titleText}>Τίτλος</Text>
+            <Text style={styles.required}>*</Text>
+          </View>
           <TextInput
             style={styles.titleInput}
             onChangeText={setName}
             placeholder="Όνομα τοποθεσίας"
           />
           <Spacer />
-          <Text style={styles.detailText}>Λεπτομέρειες</Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.detailText}>Λεπτομέρειες</Text>
+            <Text style={styles.required}>*</Text>
+          </View>
           <TextInput
             style={styles.detailInput}
             onChangeText={setDetails}
             placeholder="Λεπτομέρειες τοποθεσίας"
             multiline
           />
-          <Text style={styles.titleText}> Ανεβάστε φωτογραφία </Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={styles.titleText}> Ανεβάστε φωτογραφία </Text>
+            <Text style={styles.required}>*</Text>
+          </View>
           <Text style={styles.imageBtn} onPress={openImageLibrary}>
             Επιλέξτε φωτογραφία
           </Text>
@@ -100,6 +109,10 @@ const CreatePlaceScreen = () => {
             />
           </View>
           <Spacer />
+          <Text style={styles.requiredText}>
+            Τα πλάισια με τον αστερίσκο είναι απαράιτητα για την προσθήλη
+            τοποθεσίας
+          </Text>
           <Button
             title="Υποβολή"
             buttonStyle={{
@@ -204,6 +217,19 @@ const styles = StyleSheet.create({
     marginTop: 8,
     fontWeight: "500",
     fontSize: 18,
+  },
+  required: {
+    // marginLeft: 15,
+    marginTop: 4,
+    fontWeight: "500",
+    fontSize: 18,
+    color: "red",
+  },
+  requiredText: {
+    marginLeft: 15,
+    marginBottom: 10,
+    fontSize: 12,
+    color: "red",
   },
   detailText: {
     marginLeft: 15,
