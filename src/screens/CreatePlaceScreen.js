@@ -1,5 +1,12 @@
 import React, { useState } from "react";
-import { View, Text, TextInput, StyleSheet, Image } from "react-native";
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Image,
+  Dimensions,
+} from "react-native";
 import { PageScrollView } from "pagescrollview";
 import { Button, Dialog } from "react-native-elements";
 import Spacer from "../components/Spacer";
@@ -110,7 +117,7 @@ const CreatePlaceScreen = () => {
           </View>
           <Spacer />
           <Text style={styles.requiredText}>
-            Τα πλάισια με τον αστερίσκο είναι απαράιτητα για την προσθήλη
+            Τα πλαίσια με τον αστερίσκο είναι απαραίτητα για την προσθήκη
             τοποθεσίας
           </Text>
           <Button
@@ -188,6 +195,8 @@ CreatePlaceScreen.navigationOptions = {
   headerTitle: "Προσθήκη Τοποθεσίας",
 };
 
+const { width: SCREEN_WIDTH } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -230,6 +239,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     fontSize: 12,
     color: "red",
+    maxWidth: SCREEN_WIDTH - 15,
   },
   detailText: {
     marginLeft: 15,

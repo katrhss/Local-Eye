@@ -14,6 +14,9 @@ const AboutScreen = () => {
   return (
     <>
       <View style={styles.containerUp}>
+        <Text style={styles.text}>
+          Ανακαλύπτοντας τις κρυφές γωνιές της Κοζάνης
+        </Text>
         <Text style={styles.text}>Local Eye για Android</Text>
         <Text style={styles.text}>Έκδοση v1.0.0</Text>
         <Spacer />
